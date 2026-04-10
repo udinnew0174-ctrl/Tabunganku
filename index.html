@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <title>Tabunganku · Target Savings Tracker</title>
+    <!-- Stylesheet terpisah -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-container">
+    <!-- DASHBOARD PAGE -->
+    <div id="dashboardPage">
+        <div class="dashboard-header-simple">
+            <div class="app-title">Tabunganku</div>
+            <div style="width: 44px;"></div>
+        </div>
+        <div class="tabs">
+            <div class="tab active" data-tab="active">Berlangsung</div>
+            <div class="tab" data-tab="completed">Tercapai</div>
+        </div>
+        <button class="create-goal-btn neumorph-glass" id="createNewGoalBtn">
+            <span>+</span> Buat Celengan Baru
+        </button>
+        <div id="activeGoalsList"></div>
+        <div id="completedGoalsList" style="display: none;"></div>
+        <div id="emptyActiveState" class="empty-state" style="display: none;">
+            <div class="empty-state-icon">🏦</div>
+            <div>Belum ada target aktif</div>
+            <div style="font-size: 14px; margin-top: 8px;">Buat celengan baru untuk mulai menabung</div>
+        </div>
+    </div>
+
+    <!-- DETAIL PAGE -->
+    <div id="detailPage" class="hidden-page">
+        <div class="detail-header">
+            <div class="back-button" id="backToDashboardBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                <span class="back-text"></span>
+            </div>
+            <div class="detail-actions">
+                <div class="detail-action-btn edit-btn" id="editDetailBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 3l4 4-7 7H10v-4l7-7z"/>
+                        <path d="M4 20h16"/>
+                    </svg>
+                    <span></span>
+                </div>
+                <div class="detail-action-btn delete-btn" id="deleteGoalBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/>
+                        <path d="M9 4h6a1 1 0 0 1 1 1v2H8V5a1 1 0 0 1 1-1z"/>
+                    </svg>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <img id="detailGoalImage" class="goal-image-large" alt="goal image">
+        <div class="detail-info">
+            <div class="detail-name" id="detailGoalName"></div>
+            <div class="detail-target" id="detailTargetAmount"></div>
+            <div class="detail-daily" id="detailDailyRate"></div>
+            <div class="meta-row">
+                <span id="createdDateLabel"></span>
+                <span id="estimationDateLabel" style="color: #0A84FF; font-weight: 600;"></span>
+            </div>
+            <div class="reminder-switch">
+                <span>⏰ Pengingat 12:00 Minggu</span>
+                <div class="toggle-switch" id="reminderToggle">
+                    <div class="toggle-knob"></div>
+                </div>
+            </div>
+            <div class="metrics-boxes">
+                <div class="metric-card">
+                    <div class="metric-label">Terkumpul</div>
+                    <div class="metric-value green-text" id="totalSavedMetric"></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Kekurangan</div>
+                    <div class="metric-value red-text" id="remainingMetric"></div>
+                </div>
+            </div>
+        </div>
+        <div class="transactions-title">
+            <span>📋</span> Riwayat Transaksi
+        </div>
+        <div class="transaction-list" id="transactionListContainer"></div>
+        <div class="fab neumorph-glass" id="fabAddTransaction">+</div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toast" class="toast"></div>
+
+<!-- JavaScript terpisah -->
+<script src="script.js"></script>
+</body>
+</html>
